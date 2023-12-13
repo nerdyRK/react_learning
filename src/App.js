@@ -5,39 +5,35 @@ import sl from 'sweetalert';
 
 function App(){
 
-// let [num,setNum]=useState(0)
-let [name,setname]=useState("")
-let [pass,setpass]=useState("")
+    let [task,settask]=useState("")
+    let [task_list,settask_list]=useState([])
 
-
-
-  // function getData(){
-  //   let data={name,pass};
-  //   console.log(data)
-  // }
-
-  function validate(e){
-    e.preventDefault()
-    if (name==="rk" && pass==="mall"){
-      sl("Login suceesful","","success")
-    }else{
-      sl("Login failed","","error")
-
+    function addTask(){
+        settask_list([...task_list,task.toUpperCase()])
     }
-}
- 
 
-  return <div className="App">
-    <form action="">
-    <h1>User Authentication</h1>
+    let tasks=task_list.map((task,i)=>{
+      return <div className='row justify-content-center'>
+           <h2 className='m-1 col-md-6 text-left'>{i+1}. {task}</h2>
+           <button onClick={()=>deleteTask(i)} className='btn m-1 btn-danger col-md-1'>Delete</button>
+       </div>})
 
-    <input className='input form-control' onChange={(e)=>setname(e.target.value)} value={name} placeholder='username' type="text" />
-    <input className='input form-control' onChange={(e)=>setpass(e.target.value)} value={pass} placeholder='password' type="text" />
-    
-    <button type='submit' className='btn btn-success' onClick={validate}>Get data</button>
-    </form>
-    
-  </div>
+    function deleteTask(i){
+      let arr=task_list.filter((task,ind)=>ind!==i)
+      settask_list(arr)
+  }
+
+      return <div className="App">
+        <h1>To-Do List</h1>
+        <div className=" row justify-content-center">
+          <input className='col-md-6 m-1' type="text" placeholder='Enter task' value={task} onChange={e=>settask(e.target.value)} />
+          <button onClick={addTask} className='btn btn-primary col-md-1 m-1'>Add Task</button>
+        </div>
+        
+        {tasks}
+        
+        <h3>Total tasks: {task_list.length}</h3>
+      </div>
 }
 
 export default App

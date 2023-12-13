@@ -4,20 +4,21 @@
 
 .App{
   text-align: center;
+  box-sizing: border-box;
   /* background-color: rgb(114, 148, 177);
    */
    background:linear-gradient(skyblue,rgb(124, 124, 206));
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center;
+  flex-direction: column; */
 }
 
 input,
 button {
   font-size: 20px;
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 5px;
 }
 
@@ -27,19 +28,25 @@ button {
   background: whitesmoke;
   margin-right: 5px;
 }
-button:nth-last-child(2),
-button:nth-last-child(1) {
-  /* background: tomato; */
-  color: white;
-}
 
 form{
   background-color: rgba(240, 248, 255, 0.495);
   border: 7px solid black;
+  max-width: 400px;
   padding: 2rem;
 }
+
+
     .form-control {
       display: block;
       margin: 20px;
       /* outline: none; */
+    }
+
+    .text-left{
+      text-align: left ;
+    }
+
+    .row{
+      /* max-width: 70vw; */
     }
