@@ -1,40 +1,42 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-// import sl from 'sweetalert';
+import sl from 'sweetalert';
 
 function App(){
 
-  let [num,setNum]=useState(0)
-  // let [text,settext]=useState("")
+// let [num,setNum]=useState(0)
+let [name,setname]=useState("")
+let [pass,setpass]=useState("")
 
 
 
-  // function handleChange(e){
-  //   settext(e.target.value)
+  // function getData(){
+  //   let data={name,pass};
+  //   console.log(data)
   // }
 
-  function increase(){
-    setNum(num+1)
-    console.log(num)
-  }
+  function validate(e){
+    e.preventDefault()
+    if (name==="rk" && pass==="mall"){
+      sl("Login suceesful","","success")
+    }else{
+      sl("Login failed","","error")
 
-  function decrease(){
-    if(num==0){
-
-      return
     }
-    setNum(num-1)
-  }
+}
+ 
 
   return <div className="App">
-    <h1>Counter App</h1>
-    <h1>{num}</h1>
-    <div className="btns">
-    <button className='btn btn-success' onClick={increase}>Add</button>
-    <button className='btn btn-danger' onClick={decrease}>Subtract</button>
-    </div>
-    {/* <input onChange={handleChange} type="text" /> */}
+    <form action="">
+    <h1>User Authentication</h1>
+
+    <input className='input form-control' onChange={(e)=>setname(e.target.value)} value={name} placeholder='username' type="text" />
+    <input className='input form-control' onChange={(e)=>setpass(e.target.value)} value={pass} placeholder='password' type="text" />
+    
+    <button type='submit' className='btn btn-success' onClick={validate}>Get data</button>
+    </form>
+    
   </div>
 }
 

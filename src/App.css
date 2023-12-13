@@ -1,12 +1,12 @@
-* {
+*{
   font-family: sans-serif;
 }
 
-
-
 .App{
   text-align: center;
-  background-color: rgb(114, 148, 177);
+  /* background-color: rgb(114, 148, 177);
+   */
+   background:linear-gradient(skyblue,rgb(124, 124, 206));
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -20,10 +20,8 @@ button {
   padding: 10px;
   border-radius: 5px;
 }
-input {
-  display: block;
-  margin-bottom: 20px;
-}
+
+
 button {
   border: 1px solid gray;
   background: whitesmoke;
@@ -34,3 +32,14 @@ button:nth-last-child(1) {
   /* background: tomato; */
   color: white;
 }
+
+form{
+  background-color: rgba(240, 248, 255, 0.495);
+  border: 7px solid black;
+  padding: 2rem;
+}
+    .form-control {
+      display: block;
+      margin: 20px;
+      /* outline: none; */
+    }
