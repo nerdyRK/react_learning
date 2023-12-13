@@ -1,0 +1,36 @@
+* {
+  font-family: sans-serif;
+}
+
+
+
+.App{
+  text-align: center;
+  background-color: rgb(114, 148, 177);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+input,
+button {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+input {
+  display: block;
+  margin-bottom: 20px;
+}
+button {
+  border: 1px solid gray;
+  background: whitesmoke;
+  margin-right: 5px;
+}
+button:nth-last-child(2),
+button:nth-last-child(1) {
+  /* background: tomato; */
+  color: white;
+}
