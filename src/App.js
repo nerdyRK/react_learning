@@ -1,39 +1,34 @@
-import { useEffect, useState } from 'react'
+import React from 'react';
 import './App.css'
-import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import sl from 'sweetalert';
+import { ref, set,push } from 'firebase/database';
 
-function App(){
+import database from './firebase';
 
-    let [task,settask]=useState("")
-    let [task_list,settask_list]=useState([])
+function App() {
 
-    function addTask(){
-        settask_list([...task_list,task.toUpperCase()])
+
+  function sendData(){
+    let data={
+      name:"ravi raj",
+      age:23
     }
 
-    let tasks=task_list.map((task,i)=>{
-      return <div className='row justify-content-center'>
-           <h2 className='m-1 col-md-6 text-left'>{i+1}. {task}</h2>
-           <button onClick={()=>deleteTask(i)} className='btn m-1 btn-danger col-md-1'>Delete</button>
-       </div>})
+    const newRecordRef = push(ref(database));
 
-    function deleteTask(i){
-      let arr=task_list.filter((task,ind)=>ind!==i)
-      settask_list(arr)
+  // Set the data to the new child location
+  set(newRecordRef, data)
+    .then(() => {
+      console.log('Data added to the database successfully.');
+    })
+    .catch((error) => {
+      console.error('Error adding data to the database:', error.message);
+    });
   }
 
-      return <div className="App">
-        <h1>To-Do List</h1>
-        <div className=" row justify-content-center">
-          <input className='col-md-6 m-1' type="text" placeholder='Enter task' value={task} onChange={e=>settask(e.target.value)} />
-          <button onClick={addTask} className='btn btn-primary col-md-1 m-1'>Add Task</button>
-        </div>
-        
-        {tasks}
-        
-        <h3>Total tasks: {task_list.length}</h3>
-      </div>
+return <div className="App">
+    <h1>React-Firebase connection</h1>
+    <button onClick={sendData}>Send Data</button>
+  </div>
 }
 
-export default App
+export default App;
